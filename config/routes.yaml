@@ -1,3 +1,9 @@
-#index:
-#    path: /
+# Pour créer une route dans Symfony
+#
+#index: # Le nom de notre route (DOIT ÊTRE UNIQUE)
+#    path: / # l'URI que je place dans ma barre d'adresse
 #    controller: App\Controller\DefaultController::index
+#
+#contact: # Le nom de notre route (DOIT ÊTRE UNIQUE)
+#    path: /page/contact # l'URI que je place dans ma barre d'adresse
+#    controller: App\Controller\ContactController::contact
