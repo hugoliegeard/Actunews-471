@@ -1,11 +1,14 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}{{ app.request.get('alias') | title }}{% endblock %}
 
 {% block body %}
+
+    {# -- {{ dump(app.request) }} -- #
+
     {# -- .p-3.mx-auto.text-center>h1.display-4{ActuNews} -- #}
     <div class="p-3 mx-auto text-center">
-        <h1 class="display-4">ActuNews</h1>
+        <h1 class="display-4">{{ app.request.get('alias') | title }}</h1>
     </div>
 
     {# -- .py-5.bg-light>.container>.row>.col-md-4.mt-4 -- #}
