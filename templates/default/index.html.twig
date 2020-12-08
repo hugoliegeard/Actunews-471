@@ -3,6 +3,9 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+
+    {# {{ dump(posts) }} #}
+
     {# -- .p-3.mx-auto.text-center>h1.display-4{ActuNews} -- #}
     <div class="p-3 mx-auto text-center">
         <h1 class="display-4">ActuNews</h1>
@@ -12,34 +15,18 @@
     <div class="py-5 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mt-4">
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-body">
-                            <img class="img-fluid" src="https://via.placeholder.com/500" alt="title">
-                            <h4 class="mt-2 card-title">Primary card title</h4>
-                            <a class="btn btn-block btn-secondary" href="#">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-body">
-                            <img class="img-fluid" src="https://via.placeholder.com/500" alt="title">
-                            <h4 class="mt-2 card-title">Primary card title</h4>
-                            <a class="btn btn-block btn-secondary" href="#">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-body">
-                            <img class="img-fluid" src="https://via.placeholder.com/500" alt="title">
-                            <h4 class="mt-2 card-title">Primary card title</h4>
-                            <a class="btn btn-block btn-secondary" href="#">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                {% for post in posts %}
+                    <div class="col-md-4 mt-4">
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-body">
+                                <img class="img-fluid" src="{{ post.image }}" alt="{{ post.title }}">
+                                <h4 class="mt-2 card-title">{{ post.title }}</h4>
+                                <a class="btn btn-block btn-secondary" href="#">Lire la suite</a>
+                            </div>
+                        </div>  <!-- /.card -->
+                    </div> <!-- /.col-md-4 -->
+                {% endfor %}
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.bg-light -->
 {% endblock %}

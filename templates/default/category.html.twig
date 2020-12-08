@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{{ app.request.get('alias') | title }}{% endblock %}
+{% block title %}{{ category.name | title }}{% endblock %}
 
 {% block body %}
 
@@ -8,41 +8,25 @@
 
     {# -- .p-3.mx-auto.text-center>h1.display-4{ActuNews} -- #}
     <div class="p-3 mx-auto text-center">
-        <h1 class="display-4">{{ app.request.get('alias') | title }}</h1>
+        <h1 class="display-4">{{ category.name | title }}</h1>
     </div>
 
     {# -- .py-5.bg-light>.container>.row>.col-md-4.mt-4 -- #}
     <div class="py-5 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mt-4">
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-body">
-                            <img class="img-fluid" src="https://via.placeholder.com/500" alt="title">
-                            <h4 class="mt-2 card-title">Primary card title</h4>
-                            <a class="btn btn-block btn-secondary" href="#">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-body">
-                            <img class="img-fluid" src="https://via.placeholder.com/500" alt="title">
-                            <h4 class="mt-2 card-title">Primary card title</h4>
-                            <a class="btn btn-block btn-secondary" href="#">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-body">
-                            <img class="img-fluid" src="https://via.placeholder.com/500" alt="title">
-                            <h4 class="mt-2 card-title">Primary card title</h4>
-                            <a class="btn btn-block btn-secondary" href="#">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                {% for post in category.posts %}
+                    <div class="col-md-4 mt-4">
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-body">
+                                <img class="img-fluid" src="{{ post.image }}" alt="{{ post.title }}">
+                                <h4 class="mt-2 card-title">{{ post.title }}</h4>
+                                <a class="btn btn-block btn-secondary" href="#">Lire la suite</a>
+                            </div>
+                        </div>  <!-- /.card -->
+                    </div> <!-- /.col-md-4 -->
+                {% endfor %}
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.bg-light -->
 {% endblock %}

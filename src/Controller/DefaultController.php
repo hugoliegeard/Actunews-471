@@ -4,6 +4,8 @@
 namespace App\Controller;
 
 
+use App\Entity\Category;
+use App\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,10 +19,17 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        # return new Response("<h1>Page Accueil</h1>");
+
+        # Récupérer tous les articles
+        $posts = $this->getDoctrine()
+            ->getRepository(Post::class)
+            ->findAll();
 
         # Grâce à render, je vais pouvoir effectuer le rendu d'une vue.
-        return $this->render("default/index.html.twig");
+        # return new Response("<h1>Page Accueil</h1>");
+        return $this->render("default/index.html.twig", [
+            'posts' => $posts
+        ]);
     }
 
     /**
@@ -28,10 +37,14 @@ class DefaultController extends AbstractController
      * Afficher les articles d'une catégorie
      * ex. http://localhost:8000/politique, http://localhost:8000/economie, ...
      * @Route("/{alias}", name="default_category", methods={"GET"})
+     * @param Category $category
+     * @return Response
      */
-    public function category($alias)
+    public function category(Category $category)
     {
-        return $this->render("default/category.html.twig");
+        return $this->render("default/category.html.twig", [
+            'category' => $category
+        ]);
     }
 
     /**
