@@ -45,7 +45,10 @@ class PostController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
                 'label' => "Contenu de l'article"
             ])
             ->add('image', FileType::class, [
-                'label' => "Illustration"
+                'label' => "Illustration",
+                'attr' => [
+                    'class' => 'dropify'
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Publier cet Article'
