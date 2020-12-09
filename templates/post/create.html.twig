@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Rédiger un Article{% endblock %}
+
+{% block body %}
+    <div class="p-3 mx-auto text-center">
+        <h1 class="display-4">Rédiger un Article</h1>
+    </div>
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    {{ form(form) }}
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.bg-light -->
+{% endblock %}
