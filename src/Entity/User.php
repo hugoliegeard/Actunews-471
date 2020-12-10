@@ -6,10 +6,17 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     errorPath="email",
+ *     message="Ce compte existe déjà."
+ * )
  */
 class User implements UserInterface
 {
@@ -22,6 +29,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Length(max="180", maxMessage="Attention, pas plus de 180 caractères.")
+     * @Assert\Email(message="Vérifiez le format de votre email.")
+     * @Assert\NotBlank(message="N'oubliez pas votre email.")
      */
     private $email;
 
@@ -33,16 +43,22 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="N'oubliez pas votre mot de passe.")
+     * @Assert\NotCompromisedPassword(message="Attention, ce mot de passe n'est pas sécurisé.")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=105)
+     * @Assert\Length(max="105", maxMessage="Attention, pas plus de 105 caractères.")
+     * @Assert\NotBlank(message="N'oubliez pas votre prenom.")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=105)
+     * @Assert\Length(max="105", maxMessage="Attention, pas plus de 105 caractères.")
+     * @Assert\NotBlank(message="N'oubliez pas votre prenom.")
      */
     private $lastname;
 
@@ -110,12 +126,12 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword(): string
+    public function getPassword()
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword($password): self
     {
         $this->password = $password;
 

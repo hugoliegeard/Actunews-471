@@ -19,9 +19,13 @@
                     <div class="col-md-4 mt-4">
                         <div class="card text-white bg-primary mb-3">
                             <div class="card-body">
-                                <img class="img-fluid" src="{{ post.image }}" alt="{{ post.title }}">
+                                <img class="img-fluid" src="{{ asset('uploads/images/' ~ post.image) }}" alt="{{ post.title }}">
                                 <h4 class="mt-2 card-title">{{ post.title }}</h4>
-                                <a class="btn btn-block btn-secondary" href="#">Lire la suite</a>
+                                <a class="btn btn-block btn-secondary" href="{{ path('default_post', {
+                                    'category' : post.category.alias,
+                                    'alias' : post.alias,
+                                    'id' : post.id
+                                }) }}">Lire la suite</a>
                             </div>
                         </div>  <!-- /.card -->
                     </div> <!-- /.col-md-4 -->

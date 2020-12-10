@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav mr-auto">
                 <a class="nav-link" href="{{ path('default_category', { 'alias' : 'politique' }) }}">Politique</a>
                 <a class="nav-link" href="{{ path('default_category', { 'alias' : 'economie' }) }}">Economie</a>
                 <a class="nav-link" href="{{ path('default_category', { 'alias' : 'social' }) }}">Social</a>
@@ -14,6 +14,9 @@
                 <a class="nav-link" href="{{ path('default_category', { 'alias' : 'culture' }) }}">Culture</a>
                 <a class="nav-link" href="{{ path('default_category', { 'alias' : 'loisirs' }) }}">Loisirs</a>
                 <a class="nav-link" href="{{ path('default_category', { 'alias' : 'sports' }) }}">Sports</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="{{ path('post_create') }}">Rédiger un Article</a>
                 <a class="nav-link" href="{{ path('user_register') }}">Inscription</a>
                 <a class="nav-link" href="{{ path('contact_contact') }}">Contact</a>
             </div>
